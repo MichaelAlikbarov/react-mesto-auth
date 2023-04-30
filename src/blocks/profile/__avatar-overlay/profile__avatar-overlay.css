@@ -5,10 +5,9 @@
   left: 42%;
   top: 40%;
   transition: .3s ease;
-  background: rgba(0, 0, 0, 0);
   border: none;
   padding: 0;
   cursor: pointer;
   opacity: 0;
-  background: no-repeat center url(../../../images/VectorEdit.svg);
+  background: no-repeat center url(../../../images/VectorEdit.svg) rgba(0, 0, 0, 0);
 }
