@@ -48,6 +48,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         placeholder="Имя"
         required
         onChange={handleNameChange}
+        value={name}
       />
       <span className="popup__error name-error" id="name-error" />
       <input
@@ -58,6 +59,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         type="text"
         name={description}
         placeholder="О себе любимом"
+        value={description}
         required
         onChange={handleDescriptionChange}
       />
