@@ -1,15 +1,28 @@
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
-  const nameCard = useRef("");
-  const linkCard = useRef("");
+  const [nameCard, setNameCard] = useState("");
+  const [linkCard, setLinkCard] = useState("");
+  
+  useEffect(() => {
+    setNameCard("");
+    setLinkCard("");
+  }, [isOpen]);
+
+  function handleNameCardChange(e) {
+    setNameCard(e.target.value);
+  }
+
+  function handleLinkCardChange(e) {
+    setLinkCard(e.target.value);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     onAddPlace({
-      name: nameCard.current.value,
-      link: linkCard.current.value,
+      name: nameCard,
+      link: linkCard,
     });
   }
 
@@ -32,7 +45,8 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         form="form-place"
         placeholder="Название"
         required
-        ref={nameCard}
+        onChange={handleNameCardChange}
+        value={nameCard}
       />
       <span className="popup__error place-error" id="place-error" />
       <input
@@ -43,7 +57,8 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         form="form-place"
         placeholder="Ссылка на картинку"
         required
-        ref={linkCard}
+        onChange={handleLinkCardChange}
+        value={linkCard}
       />
       <span className="popup__error url-place-error" id="url-place-error" />
     </PopupWithForm>
