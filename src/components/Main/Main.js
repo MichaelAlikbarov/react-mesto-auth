@@ -1,4 +1,3 @@
-import React from "react";
 import { useContext } from "react";
 import Card from "../Card/Card";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -10,13 +9,14 @@ function Main({
     handleCardClick,
     onCardLike,
     onCardDelete,
-    cards
+    cards,
   }) 
 {
   
   const userData = useContext(CurrentUserContext);
 
   return (
+    <>
     <main className="content">
       <section className="profile">
         <button className="profile__avatar-container" type="button">
@@ -50,7 +50,7 @@ function Main({
         <ul className="cards__list">
           {cards.map((card) => (
             <Card
-              key={card._id}
+              key={card?._id}
               card={card}
               link={card.link}
               name={card.name}
@@ -63,6 +63,7 @@ function Main({
         </ul>
       </section>
     </main>
+    </>
   );
 }
 

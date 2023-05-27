@@ -1,8 +1,11 @@
 .logo {
   width: 142px;
   height: 33px;
+  margin-top: 45px;
   margin-bottom: 41px;
+  padding: 0;
   display: block;
+  background: url(../../images/Logo_mesto.svg) no-repeat;
 }
 
 @media (max-width: 320px) {
@@ -16,5 +19,4 @@
 
 .logo:hover {
   cursor: pointer;
-  background: #000000;
 }

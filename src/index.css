@@ -4,6 +4,10 @@
 @import url(./blocks/page/page.css);
 
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/__button/header__button.css);
+@import url(./blocks/header/__my-email/header__my-email.css);
+@import url(./blocks/header/__my-profile/header__my-profile.css);
+@import url(./blocks/header/__button/_logout/header__button_logout.css);
 @import url(./blocks/logo/logo.css);
 
 @import url(./blocks/content/content.css);
@@ -19,6 +23,17 @@
 @import url(./blocks/profile/__button/profile__button.css);
 @import url(./blocks/profile/__open-popup/profile__open-popup.css);
 @import url(./blocks/profile/__avatar-overlay/profile__avatar-overlay.css);
+
+@import url(./blocks/form-container/form-container.css);
+@import url(./blocks/form-container/__title/form-container__title.css);
+@import url(./blocks/form-container/__form/form-container__form.css);
+@import url(./blocks/form-container/__button/form-container__button.css);
+@import url(./blocks/form-container/__button-title/form-container__button-title.css);
+@import url(./blocks/form-container/__signature/form-container__signature.css);
+@import url(./blocks/form-container/__signature-title/form-container__signature-title.css);
+@import url(./blocks/form-container/__signature-subtitle/form-container__signature-subtitle.css);
+@import url(./blocks/form-container/__login-link/form-container__login-link.css);
+@import url(./blocks/form-container/__input/form-container__input.css);
 
 @import url(./blocks/cards/cards.css);
 @import url(./blocks/cards/__list/cards__list.css);
@@ -72,3 +87,8 @@
 @import url(./blocks/popup/__button/_enable/popup__button_enable.css);
 @import url(./blocks/popup/__input/_type/popup__input_type_error.css);
 @import url(./blocks/popup/__button-text/popup__button-text.css);
+@import url(./blocks/popup-tooltip/popup-tooltip.css);
+@import url(./blocks/popup-tooltip/__container/popup-tooltip__container.css);
+@import url(./blocks/popup-tooltip/__image-container/popup-tooltip__image-container.css);
+@import url(./blocks/popup-tooltip/__title/popup-tooltip__title.css);
+@import url(./blocks/popup-tooltip/__button-close/popup-tooltip__button-close.css);
