@@ -1,14 +1,16 @@
 import { useState, useContext, useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { AppContext } from "../../contexts/AppContext";
 
-export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
+export default function EditProfilePopup({ isOpen, onUpdateUser }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
   const currentUser = useContext(CurrentUserContext);
-
+  const onClose = useContext(AppContext);
   useEffect(() => {
+    
     setName(currentUser?.name);
     setDescription(currentUser?.about);
   }, [currentUser, isOpen]);

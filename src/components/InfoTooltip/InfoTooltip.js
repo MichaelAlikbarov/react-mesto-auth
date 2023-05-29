@@ -1,37 +1,15 @@
-// function InfoTooltipSuccess() {
-//   return(
+import Popup from "../../utils/Popup";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 
-//   );
-// }
-
-// function InfoTooltipError() {
-//   return(
-//     <div className="popup__container popup-info-tooltip">
-//           <div className="popup-tooltip__icon">
-//           </div>
-//           <p popup-tooltip__title>Что то пошло не так</p>
-//         </div>
-//   );
-// }
-
-export default function InfoTooltip({ isOpen, onClose, message, showIcon }) {
+export default function InfoTooltip({ isOpen, message, showIcon }) {
+  const onClose = useContext(AppContext)
   return (
-    <section
-      className={`popup popup-tooltip ${isOpen && "popup_opened"}`}
-      onClose={onClose}
-      id="popup-tooltip"
-    >
-      <div className="popup-tooltip__container">
-        <button
-          className="popup-tooltip__button-close"
-          onClick={onClose}
-          type="button"
-        ></button>
-        <div className="popup-tooltip__image-container">
-          <img src={showIcon} alt="icon's message" />
-        </div>
-        <p className="popup-tooltip__title">{message}</p>
+    <Popup isOpen={isOpen} onClose={onClose} name={"tooltip"}>
+      <div className="popup-tooltip__image-container">
+        <img src={showIcon} alt="icon's message" />
       </div>
-    </section>
+      <p className="popup-tooltip__title">{message}</p>
+    </Popup>
   );
 }

@@ -1,7 +1,13 @@
-export default function ImagePopup({ onClose, card }) {
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
+import usePopupClose from "../../utils/hooks/usePopupClose";
+
+export default function ImagePopup({ card }) {
+  const onClose = useContext(AppContext);
+  usePopupClose(card?.link, onClose)
   return (
     <section
-      className={`popup popup_image-open" 
+      className={`popup popup_image-open"
             ${card ? "popup_opened" : ""}`}
       id="popup-image"
     >

@@ -5,6 +5,7 @@ import Main from "./Main/Main.js";
 import Footer from "./Footer/Footer";
 import ImagePopup from "./ImagePopup/ImagePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { AppContext } from "../contexts/AppContext";
 import { api } from "../utils/Api";
 import EditProfilePopup from "./EditProfilePopup/EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup/EditAvatarPopup";
@@ -54,7 +55,7 @@ function App() {
   const location = useLocation();
 
   function handleLogin(email, password) {
-    auth
+     auth
       .authorize(email, password)
       .then((data) => {
         localStorage.setItem("jwt", data.token);
@@ -77,11 +78,15 @@ function App() {
       .register(email, password)
       .then(() => {
         setShowIcon(ShowIconSuccess)
-        setErrorMessage("Вы успешно зарегистрировались!");
-        setIsTooltipUser(true);
+        setErrorMessage("Вы успешно зарегистрировались!");       
         navigate("/signin");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setShowIcon(ShowIconErr);
+        setErrorMessage(err);
+      })
+      .finally(() => {setIsTooltipUser(true)})
   }
 
   const checkToken = () => {
@@ -183,7 +188,8 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <AppContext.Provider value={ closeAllPopups }>
+      <CurrentUserContext.Provider value={currentUser}>
       <div className="main-content">
         <div className="page">
           <Header handleSignOut={deleteToken} userProfile={userProfile} />
@@ -217,22 +223,18 @@ function App() {
           <Footer />
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups}
             onUpdateAvatar={handleUpdateAvatar}
           />
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
-            onClose={closeAllPopups}
             onUpdateUser={handleUpdateUser}
           />
           <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
-            onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
           />
-          <ImagePopup onClose={closeAllPopups} card={selectedCard} />
+          <ImagePopup card={selectedCard} />
           <InfoTooltip
-            onClose={closeAllPopups}
             isOpen={isTooltipUser}
             message={errorMessage}
             showIcon={showIcon}
@@ -240,6 +242,8 @@ function App() {
         </div>
       </div>
     </CurrentUserContext.Provider>
+    </AppContext.Provider>
+    
   );
 }
 

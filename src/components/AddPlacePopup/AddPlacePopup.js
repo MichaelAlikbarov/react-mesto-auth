@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { AppContext } from "../../contexts/AppContext";
 
-export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+export default function AddPlacePopup({ isOpen, onAddPlace }) {
   const [nameCard, setNameCard] = useState("");
   const [linkCard, setLinkCard] = useState("");
-  
+  const onClose = useContext(AppContext);
+
   useEffect(() => {
     setNameCard("");
     setLinkCard("");

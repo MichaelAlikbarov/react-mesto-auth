@@ -1,8 +1,10 @@
-import { useRef, } from "react";
+import { useContext, useRef, } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { AppContext } from "../../contexts/AppContext";
 
-export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+export default function EditAvatarPopup({ isOpen, onUpdateAvatar }) {
   const currentAvatar = useRef(null);
+  const onClose = useContext(AppContext);
 
   function handleSubmit(e) {
     e.preventDefault();

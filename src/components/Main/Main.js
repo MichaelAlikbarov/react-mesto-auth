@@ -3,20 +3,17 @@ import Card from "../Card/Card";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Main({
-    onEditAvatar,
-    onEditProfile,
-    onEditPlace,
-    handleCardClick,
-    onCardLike,
-    onCardDelete,
-    cards,
-  }) 
-{
-  
+  onEditAvatar,
+  onEditProfile,
+  onEditPlace,
+  handleCardClick,
+  onCardLike,
+  onCardDelete,
+  cards,
+}) {
   const userData = useContext(CurrentUserContext);
 
   return (
-    <>
     <main className="content">
       <section className="profile">
         <button className="profile__avatar-container" type="button">
@@ -63,7 +60,6 @@ function Main({
         </ul>
       </section>
     </main>
-    </>
   );
 }
 
